@@ -62,7 +62,8 @@ export interface User {
     nat: string
 }
 
-export interface UserResponse {
+export type UserList = User[]
+export interface UserListResponse {
     info: UserResponseInfo,
-    results: User[]
+    results: UserList
 }

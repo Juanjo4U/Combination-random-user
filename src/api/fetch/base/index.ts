@@ -1,6 +1,8 @@
 import { constants } from "../../../utils/constants";
 
-const defaultThenAction = <T>(res: any): T => res?.json() as T;
+function defaultThenAction<T>(res: any): T {
+    return res?.json() as T;
+}
 
 export interface FetchBase {
     url?: string;
@@ -9,10 +11,10 @@ export interface FetchBase {
     then?<T>(...args: any): T;
 }
 
-const base = async <T>({ url = "", options = {}, then: thenAction = defaultThenAction }: FetchBase = {}): Promise<T> => {
+export default async function base<T>({ url = '', options = {}, then: thenAction = defaultThenAction }: FetchBase = {}): Promise<T> {
     const res = await fetch(constants.API_URLs.BASE + url, {
         headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json',
         },
         ...options,
     });
@@ -20,5 +22,3 @@ const base = async <T>({ url = "", options = {}, then: thenAction = defaultThenA
         return Promise.reject({ status: res.status, error: res.statusText });
     return thenAction<T>(res);
 };
-
-export default base;

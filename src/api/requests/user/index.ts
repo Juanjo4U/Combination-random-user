@@ -1,6 +1,6 @@
 import { request } from "../../fetch";
-import { UserResponse } from "./contractType";
+import { UserListResponse } from "./contractType";
 
-export const list = () => {
-    return request.get<UserResponse>()
+export function list() {
+    return request.get<UserListResponse>()
 }
