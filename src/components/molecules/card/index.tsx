@@ -1,4 +1,3 @@
-import { MouseEventHandler } from "react";
 import { User } from "../../../api/requests/user/contractType";
 import { Image } from "../../atoms";
 import { ErrorBoundary } from "../../error/errorBoundary";
@@ -6,13 +5,12 @@ import './card.css';
 
 interface CardProps {
     user: User,
-    onClick?: MouseEventHandler
 }
 
-export default function Card({ user, onClick }: CardProps) {
+export default function Card({ user }: CardProps) {
     return (
         <ErrorBoundary>
-            <div className="card-user" onClick={onClick} >
+            <div className="card-user">
                 <Image src={user.picture.large} alt={user.name.title} />
                 <div className="card-user-info" >
                     <p className="card-user-info-text">first-name: {user.name.first}</p>
