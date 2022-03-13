@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { ErrorComponent } from "../../components/error/errorComponent";
 import { UserList } from "../../components/organisms";
 import { requestUserList } from "../../redux/states/user/sagas/actions";
-import { selectUserData, selectUserRequestError } from "../../redux/states/user/selectors";
+import { selectUserData, selectUserRequestError, selectUserRequestLoader } from "../../redux/states/user/selectors";
 import './userListPage.css';
 
 export default function UserListPage() {
     const isError = useSelector(selectUserRequestError);
+    const isLoading = useSelector(selectUserRequestLoader);
     const { results: userList = [] } = useSelector(selectUserData);
 
     const dispatch = useDispatch();
@@ -23,7 +24,13 @@ export default function UserListPage() {
             {isError ? (
                 <ErrorComponent message="there was an unexpected Error" buttonText="try again" onButtonClick={requestList} />
             ) : (
-                <UserList title="User List" userList={userList} />
+                <>
+                    {isLoading ?
+                        <p>Loading...</p>
+                        :
+                        <UserList title="User List" userList={userList} />
+                    }
+                </>
             )}
         </div>
     );

@@ -10,6 +10,11 @@ export function selectUserRequestError(state = initialStoreState) {
     return user.error;
 }
 
+export function selectUserRequestLoader(state = initialStoreState) {
+    const user = selectUser(state);
+    return user.isLoading;
+}
+
 export function selectUserData(state = initialStoreState): UserListResponse {
     const user = selectUser(state);
     return user.data;
