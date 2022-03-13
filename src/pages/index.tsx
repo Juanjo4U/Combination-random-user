@@ -1,5 +1,6 @@
-import React, { useCallback, useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { ErrorBoundary } from "../components/error/errorBoundary";
 import { requestUserList } from "../redux/states/user/sagas/actions";
 import {
   selectUserData,
@@ -30,7 +31,18 @@ export default function UserList() {
           <code>{JSON.stringify(info)}</code>
           <br />
           <h3>RESULT</h3>
-          <code>{JSON.stringify(results)}</code>
+          {results.map((user) => (
+            <ErrorBoundary key={user.login.uuid}>
+              <>
+                <br />
+                <p>FIRST_NAME: {user.name.first}</p>
+                <p>LAST_NAME: {user.name.last}</p>
+                <img src={user.picture.thumbnail} alt={user.name.title} />
+                <br />
+                <code>{JSON.stringify(user.location.coordinates)}</code>
+              </>
+            </ErrorBoundary>
+          ))}
         </>
       )}
     </div>
