@@ -1,6 +1,4 @@
 import { GoogleMap, GoogleMapProps, Marker, } from "@react-google-maps/api";
-import './map.css';
-
 export interface MapProps extends GoogleMapProps {
     withMarker?: boolean;
     coords: { lat: number; lng: number };
@@ -8,7 +6,7 @@ export interface MapProps extends GoogleMapProps {
 
 export default function Map({
     zoom = 5, coords, withMarker = false,
-    mapContainerClassName = 'map'
+    mapContainerClassName = 'default-map-container'
     , ...props
 }: MapProps) {
     return (
