@@ -1,6 +1,7 @@
 import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ErrorBoundary } from "../components/error/errorBoundary";
+import { Map } from "../components/map";
 import { requestUserList } from "../redux/states/user/sagas/actions";
 import {
   selectUserData,
@@ -39,7 +40,12 @@ export default function UserList() {
                 <p>LAST_NAME: {user.name.last}</p>
                 <img src={user.picture.thumbnail} alt={user.name.title} />
                 <br />
-                <code>{JSON.stringify(user.location.coordinates)}</code>
+                <Map withMarker
+                  coords={{
+                    lat: Number(user.location.coordinates.latitude),
+                    lng: Number(user.location.coordinates.longitude),
+                  }}
+                />
               </>
             </ErrorBoundary>
           ))}
