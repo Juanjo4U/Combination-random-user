@@ -1,11 +1,11 @@
 import { Provider } from "react-redux";
 import { store } from "./redux";
-import Test from "./pages";
+import { UserListPage } from "./pages";
 
 function App() {
   return (
     <Provider store={store}>
-      <Test />
+      <UserListPage />
     </Provider>
   );
 }

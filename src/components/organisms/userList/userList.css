@@ -1,0 +1,7 @@
+.user-list-container {
+    width: 90%;
+    display: grid;
+    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
+}

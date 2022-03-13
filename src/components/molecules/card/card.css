@@ -1,0 +1,17 @@
+.card-user {
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    border: solid black 2px;
+    overflow: hidden;
+}
+
+.card-user-info {
+    flex: 1;
+    padding: 10px;
+}
+
+.card-user-info-text {
+    font-size: 1rem;
+    margin: 1rem 0px;
+}
