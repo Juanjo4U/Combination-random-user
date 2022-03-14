@@ -10,7 +10,7 @@ interface UserListProps {
     onItemClick?: (...args: any[]) => any
 }
 
-export default function UserListComponent({ title, userList, onItemClick }: UserListProps) {
+export default function UserListComponent({ title, userList = [], onItemClick }: UserListProps) {
 
     const onClick = useCallback((user, index) => {
         if (typeof onItemClick === 'function') onItemClick(user, index);
@@ -22,8 +22,8 @@ export default function UserListComponent({ title, userList, onItemClick }: User
             <>
                 {title && <h2>{title}</h2>}
                 <div className="user-list-container" >
-                    {userList.map((user, index) =>
-                        <div key={user.login.uuid} onClick={() => onClick(user, index)} >
+                    {userList.map((user = {}, index) =>
+                        <div key={user.login?.uuid} onClick={() => onClick(user, index)} >
                             <Card user={user} />
                         </div>
                     )}

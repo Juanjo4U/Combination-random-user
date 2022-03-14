@@ -1,69 +1,69 @@
 export interface UserResponseInfo {
-    seed: string,
-    results: number,
-    page: number,
-    version: string
+    seed?: string,
+    results?: number,
+    page?: number,
+    version?: string
 }
 
 export interface User {
-    gender: string,
-    name: {
-        title: string,
-        first: string,
-        last: string
+    gender?: string,
+    name?: {
+        title?: string,
+        first?: string,
+        last?: string
     },
-    location: {
-        street: {
-            number: number,
-            name: string
+    location?: {
+        street?: {
+            number?: number,
+            name?: string
         },
-        city: string,
-        state: string,
-        country: string,
-        postcode: string,
-        coordinates: {
-            latitude: string,
-            longitude: string
+        city?: string,
+        state?: string,
+        country?: string,
+        postcode?: string,
+        coordinates?: {
+            latitude?: string,
+            longitude?: string
         },
-        timezone: {
-            offset: string,
-            description: string
+        timezone?: {
+            offset?: string,
+            description?: string
         }
     },
-    email: string,
-    login: {
-        uuid: string,
-        username: string,
-        password: string,
-        salt: string,
-        md5: string,
-        sha1: string,
-        sha256: string,
+    email?: string,
+    login?: {
+        uuid?: string,
+        username?: string,
+        password?: string,
+        salt?: string,
+        md5?: string,
+        sha1?: string,
+        sha256?: string,
     },
-    dob: {
-        date: string,
-        age: number
+    dob?: {
+        date?: string,
+        age?: number
     },
-    registered: {
-        date: string,
-        age: number
+    registered?: {
+        date?: string,
+        age?: number
     },
-    phone: string,
-    cell: string,
-    id: {
-        name: string,
-        value: string
+    phone?: string,
+    cell?: string,
+    id?: {
+        name?: string,
+        value?: string
     },
-    picture: {
-        large: string,
-        medium: string,
-        thumbnail: string
+    picture?: {
+        large?: string,
+        medium?: string,
+        thumbnail?: string
     },
-    nat: string
+    nat?: string
 }
 
 export type UserList = User[]
 export interface UserListResponse {
-    info: UserResponseInfo,
-    results: UserList
+    info?: UserResponseInfo,
+    results?: UserList
 }
