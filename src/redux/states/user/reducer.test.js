@@ -1,5 +1,5 @@
 import reducer, { initialState } from './reducer';
-import { setLoader,setUserListResponse } from "./actions";
+import { setLoader, setUserListResponse } from "./actions";
 
 describe('TESTING_REDUCER', () => {
     test('STATE INITIALIZE PROPERLY', () => {
@@ -20,5 +20,12 @@ describe('TESTING_REDUCER', () => {
         expect(state.data).toEqual(initialState.data);
         state = reducer(state, setUserListResponse(data));
         expect(state.data).toEqual(data);
+    });
+
+    test('STATE DOES NOT UPDATE ON A NON CAPURED ACTION', () => {
+        let state = reducer(undefined, {});
+        const prevState = { ...state };
+        state = reducer(undefined, { type: 'TEST_UNKNOWN_ACTION', payload: 'none' });
+        expect(state).toEqual(prevState);
     });
 });
